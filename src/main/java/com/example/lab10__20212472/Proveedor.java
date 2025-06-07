@@ -17,14 +17,12 @@ import lombok.AllArgsConstructor;
 public class Proveedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(length = 100, nullable = false)
+    private Long id;    @Column(name = "razon_social", length = 100, nullable = false)
     @Size(max = 100)
     @NotBlank
     private String razonSocial;
 
-    @Column(length = 100, nullable = false)
+    @Column(name = "nombre_comercial", length = 100, nullable = false)
     @Size(max = 100)
     @NotBlank
     private String nombreComercial;
@@ -37,14 +35,12 @@ public class Proveedor {
     @Pattern(regexp = "\\d+")
     private String telefono;
 
-    @Column(nullable = false)
+    @Column(name = "correo_electronico", nullable = false)
     @Email
-    private String correoElectronico;
-
-    @Column
+    private String correoElectronico;    @Column(name = "sitio_web")
     private String sitioWeb;
 
-    @Column(length = 150)
+    @Column(name = "direccion_fisica", length = 150)
     @Size(max = 150)
     private String direccionFisica;
 
@@ -52,15 +48,15 @@ public class Proveedor {
     @NotBlank
     private String pais;
 
-    @Column(nullable = false)
+    @Column(name = "representante_legal", nullable = false)
     @NotBlank
     private String representanteLegal;
 
-    @Column(nullable = false)
+    @Column(name = "dni_representante_legal", nullable = false)
     @Pattern(regexp = "\\d+")
     private String dniRepresentanteLegal;
 
-    @Column(nullable = false)
+    @Column(name = "tipo_proveedor", nullable = false)
     @Enumerated(EnumType.STRING)
     private TipoProveedor tipoProveedor;
 
@@ -68,24 +64,22 @@ public class Proveedor {
     @Enumerated(EnumType.STRING)
     private CategoriaProveedor categoria;
 
-    @Column
+    @Column(name = "facturacion_anual")
     private Double facturacionAnualDolares;
 
-    @Column(nullable = false)
+    @Column(name = "fecha_registro", nullable = false)
     private LocalDateTime fechaRegistro;
 
-    @Column
+    @Column(name = "ultima_actualizacion")
     private LocalDateTime ultimaActualizacion;
 
     @Column(nullable = false)
-    private Boolean estado;
-
-    public enum TipoProveedor {
-        Nacional, Internacional
+    private Boolean estado;    public enum TipoProveedor {
+        NACIONAL, INTERNACIONAL
     }
 
     public enum CategoriaProveedor {
-        Servicios, Productos, Tecnologia, Otros
+        SERVICIOS, PRODUCTOS, TECNOLOGIA, OTROS
     }
 }
 
